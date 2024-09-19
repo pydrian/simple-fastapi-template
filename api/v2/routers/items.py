@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 from starlette import status
+from typing import Union
 
 
 router = APIRouter()
@@ -26,7 +27,7 @@ async def get_items() -> JSONResponse:
 
 
 @router.get("/{item_id}")
-async def get_item(item_id: int) -> JSONResponse:
+async def get_item(item_id: int) -> Union[JSONResponse, HTTPException]:
     for item in ITEMS:
         if item["id"] == item_id:
             return JSONResponse(status_code=status.HTTP_200_OK,
