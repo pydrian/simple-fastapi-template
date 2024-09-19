@@ -22,9 +22,6 @@ dist/
 # Python environment
 /env
 
-# Poetry lock file
-poetry.lock
-
 # Log files
 *.log
 
