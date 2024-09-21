@@ -10,6 +10,16 @@ def test_v1_items():
     assert response.status_code == 200
 
 
+def test_v2_get_users():
+    response = client.get("/v2/users")
+    assert response.status_code == 200
+
+
+def test_v2_get_user():
+    response = client.get("/v2/users/1")
+    assert response.status_code == 200
+
+
 def test_v2_items():
     response = client.get("/v2/items/1")
     assert response.status_code in (200, 404)

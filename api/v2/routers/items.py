@@ -1,37 +1,29 @@
 from fastapi import APIRouter, HTTPException
-from fastapi.responses import JSONResponse
 from starlette import status
-from typing import Union
+from typing import List
+
+from api.v2.models.items import Item
 
 
 router = APIRouter()
 
 
 ITEMS = [
-    {
-        "id": 1,
-        "title": "Item 1",
-        "weight": 20.0
-    },
-    {
-        "id": 2,
-        "title": "Item 2",
-        "weight": 15.5
-    }
+    Item(id=1, title="Item 1", weight=20.0),
+    Item(id=2, title="Item 2", weight=15.5)
 ]
 
 
 @router.get("")
-async def get_items() -> JSONResponse:
-    return JSONResponse(status_code=status.HTTP_200_OK, content=ITEMS)
+async def get_items() -> List[Item]:
+    return ITEMS
 
 
-@router.get("/{item_id}")
-async def get_item(item_id: int) -> Union[JSONResponse, HTTPException]:
+@router.get("/{item_id}", status_code=status.HTTP_200_OK)
+async def get_item(item_id: int) -> Item:
     for item in ITEMS:
-        if item["id"] == item_id:
-            return JSONResponse(status_code=status.HTTP_200_OK,
-                                content=item)
+        if item.id == item_id:
+            return item
 
-    return HTTPException(status_code=status.HTTP_404_NOT_FOUND,
-                         detail="Item not found.")
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                        detail="Item not found.")
