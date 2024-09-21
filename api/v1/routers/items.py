@@ -1,25 +1,27 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, status, HTTPException
+from typing import List
 
-import uuid
-
+from api.v1.models.items import Item
 
 router = APIRouter()
 
 
 ITEMS = [
-    {
-        "id": uuid.uuid4(),
-        "title": "Item 1",
-        "weight": 20.0
-    },
-    {
-        "id": uuid.uuid4(),
-        "title": "Item 2",
-        "weight": 15.5
-    }
+    Item(id=1, title="Item 1", weight=20.0),
+    Item(id=2, title="Item 2", weight=15.5)
 ]
 
 
-@router.get("")
-async def get_items():
+@router.get("", status_code=status.HTTP_200_OK)
+async def get_items() -> List[Item]:
     return ITEMS
+
+
+@router.get("/{item_id}", status_code=status.HTTP_200_OK)
+async def get_item(item_id: int) -> Item:
+    for item in ITEMS:
+        if item.id == item_id:
+            return item
+
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                        detail="Item not found.")

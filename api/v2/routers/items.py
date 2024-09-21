@@ -14,7 +14,7 @@ ITEMS = [
 ]
 
 
-@router.get("")
+@router.get("", status_code=status.HTTP_200_OK)
 async def get_items() -> List[Item]:
     return ITEMS
 
