@@ -7,7 +7,6 @@ from api.v2.models.items import Item
 
 router = APIRouter()
 
-
 ITEMS = [
     Item(id=1, title="Item 1", weight=20.0),
     Item(id=2, title="Item 2", weight=15.5)

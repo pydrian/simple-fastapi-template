@@ -3,8 +3,8 @@ from typing import List
 
 from api.v1.models.items import Item
 
-router = APIRouter()
 
+router = APIRouter()
 
 ITEMS = [
     Item(id=1, title="Item 1", weight=20.0),

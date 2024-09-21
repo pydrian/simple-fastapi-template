@@ -7,7 +7,6 @@ from api.v2.models.users import User
 
 router = APIRouter()
 
-
 USERS = [
     User(id=1, username="user_1", birthday=date(year=2024, month=9, day=22)),
     User(id=2, username="user_2", birthday=date(year=2022, month=9, day=11))
