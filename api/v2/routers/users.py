@@ -15,11 +15,17 @@ USERS = [
 
 @router.get("", status_code=status.HTTP_200_OK)
 async def get_users() -> List[User]:
+    """Get user list."""
     return USERS
 
 
 @router.get("/{user_id}", status_code=status.HTTP_200_OK)
 async def get_user(user_id: int) -> User:
+    """
+    Get user by id.
+    Args:
+        user_id: `int`
+    """
     for user in USERS:
         if user.id == user_id:
             return user

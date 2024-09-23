@@ -15,11 +15,17 @@ ITEMS = [
 
 @router.get("", status_code=status.HTTP_200_OK)
 async def get_items() -> List[Item]:
+    """Get items."""
     return ITEMS
 
 
 @router.get("/{item_id}", status_code=status.HTTP_200_OK)
 async def get_item(item_id: int) -> Item:
+    """
+    Get item by id.
+    Args:
+        item_id: `int`
+    """
     for item in ITEMS:
         if item.id == item_id:
             return item
