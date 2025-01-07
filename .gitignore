@@ -45,6 +45,10 @@ dist/
 #VSCode
 .vscode/
 
+# Cache
+.mypy_cache/
+.pytest_cache/
+
 # Unit test reports
 TEST*.xml
 
