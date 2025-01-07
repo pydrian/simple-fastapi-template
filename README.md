@@ -30,3 +30,25 @@ make test  ## or poetry run pytest
 ```bash
 make mypy .  ## or poetry run mypy .
 ```
+
+## API Documentation
+
+Each API version has its own Swagger UI documentation available at:
+
+- V1 API Documentation: 
+  - Swagger UI: http://localhost:8000/v1/docs
+  - ReDoc: http://localhost:8000/v1/redoc
+
+- V2 API Documentation:
+  - Swagger UI: http://localhost:8000/v2/docs  
+  - ReDoc: http://localhost:8000/v2/redoc
+
+- V3 API Documentation:
+  - Swagger UI: http://localhost:8000/v3/docs
+  - ReDoc: http://localhost:8000/v3/redoc
+
+You can use these interactive documentation pages to:
+- Browse available endpoints
+- View request/response schemas
+- Try out API calls directly in your browser
+- Download OpenAPI specifications
